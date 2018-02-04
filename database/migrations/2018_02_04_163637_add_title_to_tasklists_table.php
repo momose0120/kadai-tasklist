@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TasklistTable01 extends Migration
+class AddTitleToTasklistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class TasklistTable01 extends Migration
      */
     public function up()
     {
-        Schema::create('tasklists', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('taskname');
-            $table->string('content');
-            $table->timestamps();
+        Schema::table('tasklists', function (Blueprint $table) {
+            $table->string('status',10);
         });
     }
 
@@ -27,6 +24,8 @@ class TasklistTable01 extends Migration
      */
     public function down()
     {
-        Schema::drop('tasklists');
+        Schema::table('tasklists', function (Blueprint $table) {
+            //
+        });
     }
 }
